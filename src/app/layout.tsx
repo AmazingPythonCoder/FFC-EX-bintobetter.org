@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GoogleTagManager, {
+  GoogleTagManagerNoScript,
+} from "@/components/google-tag-manager";
+import CookieConsent from "@/components/cookie-consent";
 
 export const metadata: Metadata = {
   title: "Bin to Better | Turning Waste into Opportunity",
@@ -13,7 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <GoogleTagManagerNoScript />
+        <GoogleTagManager />
+        {children}
+        <CookieConsent />
+      </body>
     </html>
   );
 }
